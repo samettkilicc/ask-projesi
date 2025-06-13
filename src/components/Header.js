@@ -1,9 +1,19 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Collapse için gerekli
+
 
 const Header = () => {
   const location = useLocation();
+  const handleNavItemClick = () => {
+    const collapseEl = document.getElementById('navbarNav');
+    if (collapseEl) { 
+      const collapse = window.bootstrap.Collapse.getInstance(collapseEl) || new window.bootstrap.Collapse(collapseEl);
+      collapse.hide();
+    }
+  };
+  
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light shadow sticky-top">
@@ -19,22 +29,25 @@ const Header = () => {
         </button>
         <div className="collapse navbar-collapse justify-content-center" id="navbarNav">
           <ul className="navbar-nav gap-2">
-            <li className="nav-item">
-              <Link className={`nav-link ${location.pathname === '/' ? 'active text-white bg-danger rounded' : ''}`} to="/">Ana Sayfa</Link>
-            </li>
-            <li className="nav-item">
-              <Link className={`nav-link ${location.pathname === '/weekly-plans' ? 'active text-white bg-danger rounded' : ''}`} to="/weekly-plans">Etkinlikler</Link>
-            </li>
-            <li className="nav-item">
-              <Link className={`nav-link ${location.pathname === '/message' ? 'active text-white bg-danger rounded' : ''}`} to="/message">💌 Mesaj</Link>
-            </li>
-            <li className="nav-item">
-              <Link className={`nav-link ${location.pathname === '/mini-game' ? 'active text-white bg-danger rounded' : ''}`} to="/mini-game">🎁 Oyun</Link>
-            </li>
-            <Link to="/game/find-heart" className="nav-link">🧩 Kalbi Bul</Link>
-            <Link to="/game/who-am-i" className="nav-link">🐣 Beni Hangisi Tanımlar?</Link>
-            <Link to="/game/drag-heart" className="nav-link">💘 Kalbi Sürükle</Link>
-
+            {[
+              { label: 'Ana Sayfa', path: '/' },
+              { label: 'Etkinlikler', path: '/weekly-plans' },
+              { label: '💌 Mesaj', path: '/message' },
+              { label: '🎁 Oyun', path: '/mini-game' },
+              { label: '🧩 Kalbi Bul', path: '/game/find-heart' },
+              { label: '🐣 Beni Hangisi Tanımlar?', path: '/game/who-am-i' },
+              { label: '💘 Kalbi Sürükle', path: '/game/drag-heart' }
+            ].map(({ label, path }) => (
+              <li key={path} className="nav-item">
+                <Link
+                  className={`nav-link ${location.pathname === path ? 'active text-white bg-danger rounded' : ''}`}
+                  to={path}
+                  onClick={handleNavItemClick}
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>
