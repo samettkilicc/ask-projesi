@@ -26,9 +26,9 @@ const Timer = () => {
 
   return (
     <div style={{ textAlign: 'center', marginTop: '2rem', fontSize: '1.25rem', fontWeight: 'bold' }}>
-      <p>Konuşmaya başlayalı:</p>
+      <p>Hayatımın aşkını bulalı:</p>
       <p>
-        🗓️ {timePassed.days} gün {timePassed.hours} saat {timePassed.minutes} dakika {timePassed.seconds} saniye geçti
+        🗓️ {timePassed.days} gün {timePassed.hours} saat {timePassed.minutes} dakika {timePassed.seconds} saniye oldu !
       </p>
     </div>
   );

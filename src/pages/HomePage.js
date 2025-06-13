@@ -10,7 +10,7 @@ const HomePage = () => {
         Hoş geldin Merve Nur Kılıç 💖
       </h1>
       <div className="fs-5 text-dark">
-        <p>📅 Konuşmaya başlayalı:</p>
+        <p>📅 Hayatımın aşkını bulalı:</p>
         <Timer />
       </div>
     </div>
