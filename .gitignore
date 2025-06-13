@@ -1,0 +1,23 @@
+# dependencies
+node_modules/
+.pnpm/
+.yarn/
+
+# testing
+coverage/
+
+# production
+build/
+dist/
+
+# misc
+.DS_Store
+.env
+.env.*.local
+.vscode/
+.idea/
+*.log
+
+# local history / npm artifacts
+.npm/
+.cache/
